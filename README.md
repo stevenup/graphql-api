@@ -101,7 +101,7 @@ QueryType = GraphQL::ObjectType.define do
   name "Query"
   description "一个根查询的 schema"
 
-  field :acticle do
+  field :article do
     type ArticleType
     argument :id, !types.ID
     description "Find a Article by ID"
@@ -131,7 +131,7 @@ config.autoload_paths << Rails.root.join('app/graphql/types')
 
 ```
 query {
-  acticle(id: 1){
+  article(id: 1){
     title
   }
 }
@@ -142,7 +142,7 @@ query {
 ```json
 {
   "data": {
-    "acticle": {
+    "article": {
       "title": "A GraphQL Server"
     }
   }
@@ -154,7 +154,7 @@ query {
 ```ruby
 query_string = "
 {
-  acticle(id: 1) {
+  article(id: 1) {
     id
     title
   }
@@ -164,7 +164,7 @@ result_hash = GraphqApiSchema.execute(query_string)
 # output:
 # {
 #   "data" => {
-#     "acticle" => {
+#     "article" => {
 #        "id" => 1,
 #        "title" => "A GraphQL Server"
 #     }
